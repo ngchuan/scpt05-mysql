@@ -41,9 +41,7 @@ async function main() {
         })
     })
     
-    
-
-    // Add New Customer Step 5.3
+ // Add New Customer Step 5.3
     app.get('/customers/create', async(req,res)=>{
         let [companies] = await connection.execute('SELECT * from Companies');
         let [employees] = await connection.execute('SELECT * from Employees');
@@ -60,17 +58,10 @@ async function main() {
         let [result] = await connection.execute(query, bindings);
     
         let newCustomerId = result.insertId;
-        // for (let id of employee_id) {
-        //     let query = 'INSERT INTO EmployeeCustomer (employee_id, customer_id) VALUES (?, ?)';
-        //     let bindings = [id, newCustomerId];
-        //     await connection.execute(query, bindings);
-        // }
-    
         res.redirect('/customers');
     })
     
-    
-    // Edit A Specific Customer Step 5.4
+     // Edit A Specific Customer Step 5.4
     app.get('/customers/:customer_id/edit', async (req, res) => {
         let [customers] = await connection.execute('SELECT * from Customers WHERE customer_id = ?', [req.params.customer_id]);
         let [companies] = await connection.execute('SELECT * from Companies');
@@ -87,15 +78,7 @@ async function main() {
         let query = 'UPDATE Customers SET first_name=?, last_name=?, rating=?, company_id=? WHERE customer_id=?';
         let bindings = [first_name, last_name, rating, company_id, req.params.customer_id];
         await connection.execute(query, bindings);
-    
-        // await connection.execute('DELETE FROM EmployeeCustomer WHERE customer_id = ?', [req.params.customer_id]);
-    
-        // for (let id of employee_id) {
-        //     let query = 'INSERT INTO EmployeeCustomer (employee_id, customer_id) VALUES (?, ?)';
-        //     let bindings = [id, req.params.customer_id];
-        //     await connection.execute(query, bindings);
-        // }
-    
+        
         res.redirect('/customers');
     });
     
@@ -115,16 +98,11 @@ async function main() {
             res.redirect('/customers');
         })
 
-
     })
-
-    
 
     app.listen(3000, ()=>{
         console.log('Server is running')
     });
 }
-
-
 
 main();

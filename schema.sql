@@ -1,4 +1,5 @@
 -- SQL Schema for Financial Advising Company
+CREATE DATABASE crm;
 USE crm;
 
 -- Creating Companies Table
@@ -18,6 +19,7 @@ CREATE TABLE Customers (
     FOREIGN KEY (company_id) REFERENCES Companies(company_id)
 );
 
+
 -- Creating Departments Table
 CREATE TABLE Departments (
     department_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,9 +31,13 @@ CREATE TABLE Employees (
     employee_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
-    department_id INT,
+	designation VARCHAR(50) NOT NULL,
+	department_id INT,
+	contact VARCHAR(15) NOT  NULL,
+	date_joined DATE,
     FOREIGN KEY (department_id) REFERENCES Departments(department_id)
 );
+
 
 -- Creating Products Table
 CREATE TABLE Products (
