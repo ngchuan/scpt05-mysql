@@ -1,5 +1,6 @@
 -- SQL Schema for Financial Advising Company
 CREATE DATABASE crm;
+
 USE crm;
 
 -- Creating Companies Table
