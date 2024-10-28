@@ -1,0 +1,47 @@
+{{#extends "base"}}
+{{#block "content"}}
+<h1>Add a New Employee</h1>
+<form method="POST">
+    <div class="mb-3">
+        <label>First Name</label>
+        <input type="text" class="form-control" name="first_name">
+    </div>
+    <div class="mb-3">
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="last_name">
+    </div>
+    <div class="mb-3">
+        <label>Designation</label>
+        <input type="text" class="form-control" name="designation">
+    </div>
+    <div class="mb-3">
+        <label>Department</label>
+        <select name="department_id" class="form-control">
+            {{#each department}}
+            <option value="{{department_id}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Employee Contact</label>
+        <input type="text" class="form-control" name="contact">
+    </div>
+    <div class="mb-3">
+        <label>Employee Date Joined</label>
+        <input type="date" class="form-control" name="date_joined">
+    </div>
+
+
+    <!--    <div class="mb-3"> -->
+    <!--       <label>Employees</label>  -->
+    <!--        <select name="employee_id" class="form-control" multiple> -->
+    <!--         {{#each employees}} -->
+    <!--         <option value="{{employee_id}}">{{first_name}} {{last_name}}</option> -->
+    <!--          {{/each}} -->
+    <!--       </select> -->
+    <!--   </div> -->
+
+    <button type="submit" class="btn btn-primary">Add Employee Record</button>
+</form>
+{{/block}}
+{{/extends}}
