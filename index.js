@@ -119,16 +119,20 @@ async function main() {
         let [employees] = await connection.execute('SELECT * from Employees WHERE employee_id = ?', [req.params.employee_id]);
         let [departments] = await connection.execute('SELECT * from Departments');
         let employee = employees[0];
+        // console.log(employee.date_joined);
+        employee.date_joined = employee.date_joined.toISOString().split('T')[0];
         res.render('employees/edit', {
             'employee': employee,
             'departments': departments
         })
+
+
     })
 
     app.post('/customers/:customer_id/edit', async (req, res) => {
         let { first_name, last_name, rating, company_id } = req.body;
 
-        let query = 'UPDATE Customers SET first_name=?, last_name=?, rating=?, company_id=?, WHERE customer_id=?';
+        let query = 'UPDATE Customers SET first_name=?, last_name=?, rating=?, company_id=? WHERE customer_id=?';
         let bindings = [first_name, last_name, rating, company_id, req.params.customer_id];
         await connection.execute(query, bindings);
 
@@ -169,6 +173,7 @@ async function main() {
                 "SELECT * FROM Employees WHERE employee_id =?", [req.params.employee_id]
     );
         const employee = employees[0];
+   
 
         res.render('employees/delete', {
             employee

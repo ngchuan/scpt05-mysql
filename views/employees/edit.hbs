@@ -4,19 +4,19 @@
 <form method="POST">
     <div class="mb-3">
         <label>First Name</label>
-        <input type="text" class="form-control" name="first_name">
+        <input type="text" class="form-control" name="first_name" value="{{employee.first_name}}">
     </div>
     <div class="mb-3">
         <label>Last Name</label>
-        <input type="text" class="form-control" name="last_name">
+        <input type="text" class="form-control" name="last_name" value="{{employee.last_name}}">
     </div>
     <div class="mb-3">
         <label>Designation</label>
-        <input type="text" class="form-control" name="designation">
+        <input type="text" class="form-control" name="designation" value="{{employee.designation}}">
     </div>
     <div class="mb-3">
         <label>Department</label>
-        <select name="department_id" class="form-control">
+        <select name="department_id" class="form-control" value="{{employee.department_id}}">
             {{#each departments}}
             <option value="{{department_id}}"
             {{#eq this.department_id ../employee.department_id}}selected{{/eq}}>
@@ -27,11 +27,11 @@
     </div>
     <div class="mb-3">
         <label>Employee Contact</label>
-        <input type="text" class="form-control" name="contact">
+        <input type="text" class="form-control" name="contact" value="{{employee.contact}}">
     </div>
     <div class="mb-3">
         <label>Employee Date Joined</label>
-        <input type="date" class="form-control" name="date_joined">
+        <input type="date" class="form-control" name="date_joined" value="{{employee.date_joined}}">
     </div>
 
 
